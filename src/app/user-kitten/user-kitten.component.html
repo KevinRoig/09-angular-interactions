@@ -1,0 +1,13 @@
+<section class="user_list">
+    <div class="kitty_photo">
+        <img src="{{userKitten?.photo}}" alt="Une photo de {{userKitten?.name}}">
+    </div>
+    <div class="infos_container">
+        <div><p>Nom : {{userKitten?.name}}</p>
+        </div>
+        <div><p>Race : {{userKitten?.race}}</p>
+        </div>
+        <div><p>Né {{userKitten?.birth_date | date:'le d MMMM yyyy'}}</p>             
+        </div>
+    </div>
+</section>

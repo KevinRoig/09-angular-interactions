@@ -1,0 +1,16 @@
+<section>
+    <div>
+        <div class="photo">
+            <img src="{{kitty?.photo}}" alt="Une photo de {{kitty?.name}}">
+            <div class="infos_container">
+                <div><p>Nom : {{kitty?.name}}</p>
+                </div>
+                <div><p>Race : {{kitty?.race}}</p>
+                </div>
+                <div><p>Né {{kitty?.birth_date | date:'le d MMMM yyyy'}}</p>             
+                </div>
+                <button class="button" (click)="adoptKitten()">Adopt this cute face!</button>
+            </div>
+        </div>
+    </div>
+</section>

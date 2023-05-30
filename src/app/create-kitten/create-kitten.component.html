@@ -1,0 +1,64 @@
+<section class="global_container">
+    <section class="form_and_kittenList_container">
+        <div class="form_container">
+            <form (ngSubmit)="kittyForm.valid && saveKitten()" #kittyForm="ngForm">
+                <h1>Enregistrer un nouveau chaton trop mignon</h1>
+        
+                <div class="register">
+                    <label for="name">Nom : </label>
+                    <input type="text" id="name" name="name" [(ngModel)]="newKitten.name" #name="ngModel" required
+                        minlength="3">
+                </div>
+                <div class="errors" *ngIf="kittyForm.submitted && name.errors">
+                    <span *ngIf="name.errors?.['required']">Le nom est requis</span>
+                    <span *ngIf="name.errors?.['minlength']">La longueur minimale du nom est de 3 lettres</span>
+                </div>
+        
+                <div class="register">
+                    <label for="race">Race : </label>
+                    <input type="text" id="race" name="race" [(ngModel)]="newKitten.race" #race="ngModel" required
+                        minlength="3">
+                </div>
+                <div class="errors" *ngIf="kittyForm.submitted && race.errors">
+                    <span *ngIf="race.errors?.['required']">La race est requise.</span>
+                    <span *ngIf="race.errors?.['minlength']">La longeur minimale de la race est de 3 lettres.</span>
+                </div>
+        
+                <div class="register">
+                    <label for="birth_date">Date de naissance :</label>
+                    <input type="date" id="birth_date" name="birth_date" [(ngModel)]="newKitten.birth_date" #birthDate="ngModel"
+                        required>
+                </div>
+                <div class="errors" *ngIf="kittyForm.submitted && birthDate.errors">
+                    <span *ngIf="birthDate.errors?.['required']">La date est requise</span>
+                </div>
+        
+                <div class="register">
+                    <label for="photo">Photo : </label>
+                    <input type="text" id="photo" name="photo" [(ngModel)]="newKitten.photo" #photo="ngModel" required>
+                </div>
+                <div class="errors" *ngIf="kittyForm.submitted && photo.errors">
+                    <span *ngIf="photo.errors?.['required']">La photo est requise</span>
+                </div>
+        
+                <div class="register">
+                    <button [ngClass]="!kittyForm.valid ? 'red_button' : 'green_button'" type="submit">Enregistrer ce
+                        chaton</button>
+                </div>
+            </form>
+        </div>
+        <div class="kitten_list_container">
+            <h1>Chatons disponibles à l'adoption</h1>
+            <app-list-kitten *ngFor="let kitty of listKitten" [kitty]="kitty" (sendKittenToUserList)="onDataChange($event)">
+            </app-list-kitten>
+        </div>
+        </section>
+        
+        
+        <div class="user_list_container">
+            <h1>Mes chatons</h1>
+            <app-user-kitten *ngFor="let userKitten of userList" [userKitten]="userKitten"
+                ></app-user-kitten>
+        
+        </div>
+</section>
